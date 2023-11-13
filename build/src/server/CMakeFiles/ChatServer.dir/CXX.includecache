@@ -34,6 +34,12 @@ friendmodel.hpp
 groupmodel.hpp
 ../include/server/groupmodel.hpp
 
+../include/server/db/db.h
+string
+-
+mysql/mysql.h
+-
+
 ../include/server/model/friendmodel.hpp
 user.hpp
 ../include/server/model/user.hpp
@@ -426,6 +432,12 @@ muduo/base/Logging.h
 vector
 -
 
+/home/bgr/Desktop/ChatServer/src/server/db/db.cpp
+db.h
+/home/bgr/Desktop/ChatServer/src/server/db/db.h
+muduo/base/Logging.h
+-
+
 /home/bgr/Desktop/ChatServer/src/server/main.cpp
 chatserver.hpp
 /home/bgr/Desktop/ChatServer/src/server/chatserver.hpp
@@ -435,4 +447,10 @@ iostream
 -
 signal.h
 -
+
+/home/bgr/Desktop/ChatServer/src/server/model/friendmodel.cpp
+friendmodel.hpp
+/home/bgr/Desktop/ChatServer/src/server/model/friendmodel.hpp
+db.h
+/home/bgr/Desktop/ChatServer/src/server/model/db.h
 

@@ -28,12 +28,14 @@ vector<User> g_currentUserFriendList;
 vector<Group> g_currentUserGroupList;
 // 显示当前登录成功用户的基本信息
 void showCurrentUserData();
+// 控制聊天页面程序
+bool isMainMenuRunning = false;
 
 // 接受线程
 void readTaskHandler(int clientfd);
 // 获取系统时间（聊天信息需要添加时间信息）
 string getCurrentTime();
-// 主聊天页面程序
+// 主菜单页面程序
 void mainMenu(int);
 
 // 聊天客户端实现，main线程用作发送线程，子线程用作接受线程
@@ -134,6 +136,9 @@ int main(int argc, char **argv)
                         // 记录当前用户的好友列表信息
                         if (responsejs.contains("friends"))
                         {
+                            // 初始化
+                            g_currentUserFriendList.clear();
+
                             vector<string> vec = responsejs["friends"];
                             for (string &str : vec)
                             {
@@ -149,6 +154,9 @@ int main(int argc, char **argv)
                         // 记录当前用户的群组列表信息
                         if (responsejs.contains("groups"))
                         {
+                            // 初始化
+                            g_currentUserGroupList.clear();
+
                             vector<string> vec1 = responsejs["groups"];
                             for (string &groupstr : vec1)
                             {
@@ -200,11 +208,17 @@ int main(int argc, char **argv)
                             }
                         }
 
-                        // 登录成功，启动接受线程负责接受数据
-                        std::thread readTask(readTaskHandler, clientfd);
-                        readTask.detach();
+                        // 登录成功，启动接受线程负责接受数据，该线程只启动一次
+                        static int threadnum = 0;
+                        if (threadnum == 0)
+                        {
+                            std::thread readTask(readTaskHandler, clientfd);
+                            readTask.detach();
+                            threadnum++;
+                        }
 
                         // 进入聊天主菜单界面
+                        isMainMenuRunning = true;
                         mainMenu(clientfd);
                     }
                 }
@@ -334,7 +348,7 @@ void mainMenu(int clientfd)
     help();
 
     char buffer[1024] = {0};
-    for (;;)
+    while (isMainMenuRunning)
     {
         cin.getline(buffer, 1024);
         string commandbuf(buffer);
@@ -494,6 +508,10 @@ void loginout(int clientfd, string str)
     if (-1 == len)
     {
         cerr << "send loginout msg error -> " << buffer << endl;
+    }
+    else
+    {
+        isMainMenuRunning = false;
     }
 }
 
