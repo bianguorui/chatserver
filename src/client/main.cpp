@@ -404,7 +404,7 @@ void addfriend(int clientfd, string str)
     json js;
     js["msgid"] = ADD_FRIEND_MSG;
     js["id"] = g_currentUser.getId();
-    js["friendfd"] = friendid;
+    js["friendid"] = friendid;
     string buffer = js.dump();
 
     int len = send(clientfd, buffer.c_str(), strlen(buffer.c_str()) + 1, 0);
