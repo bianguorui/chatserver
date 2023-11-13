@@ -483,8 +483,18 @@ void groupchat(int clientfd, string str)
     }
 }
 
-void loginout(int, string)
+void loginout(int clientfd, string str)
 {
+    json js;
+    js["msgid"] = LOGINOUT_MSG;
+    js["id"] = g_currentUser.getId();
+    string buffer = js.dump();
+
+    int len = send(clientfd, buffer.c_str(), strlen(buffer.c_str()) + 1, 0);
+    if (-1 == len)
+    {
+        cerr << "send loginout msg error -> " << buffer << endl;
+    }
 }
 
 // 显示当前登录成功用户的基本信息

@@ -17,11 +17,12 @@ ChatService *ChatService::instance() // 静态方法写在类外就不用加stat
 ChatService::ChatService()
 {
     m_msgHandlerMap.insert({LOGIN_MSG, std::bind(&ChatService::login, this, _1, _2, _3)});
+    m_msgHandlerMap.insert({LOGINOUT_MSG, std::bind(&ChatService::loginOut, this, _1, _2, _3)});
     m_msgHandlerMap.insert({REG_MSG, std::bind(&ChatService::reg, this, _1, _2, _3)});
     m_msgHandlerMap.insert({ONE_CHAT_MSG, std::bind(&ChatService::oneChat, this, _1, _2, _3)});
     m_msgHandlerMap.insert({ADD_FRIEND_MSG, std::bind(&ChatService::addFriend, this, _1, _2, _3)});
 
-     // 群组业务管理相关事件处理回调注册
+    // 群组业务管理相关事件处理回调注册
     m_msgHandlerMap.insert({CREATE_GROUP_MSG, std::bind(&ChatService::createGroup, this, _1, _2, _3)});
     m_msgHandlerMap.insert({ADD_GROUP_MSG, std::bind(&ChatService::addGroup, this, _1, _2, _3)});
     m_msgHandlerMap.insert({GROUP_CHAT_MSG, std::bind(&ChatService::groupChat, this, _1, _2, _3)});
@@ -147,6 +148,25 @@ void ChatService::login(const TcpConnectionPtr &conn, json &js, Timestamp time)
 
         conn->send(response.dump());
     }
+}
+
+// 处理注销业务
+void ChatService::loginOut(const TcpConnectionPtr &conn, json &js, Timestamp time)
+{
+    int userid = js["id"].get<int>();
+
+    {
+        lock_guard<mutex> lock(m_connMutex);
+        auto it = m_userConnMap.find(userid);
+        if (it != m_userConnMap.end())
+        {
+            m_userConnMap.erase(it);
+        }
+    }
+
+    // 更新用户状态信息
+    User user(userid, "", "", "offline");
+    m_usermodel.updateState(user);
 }
 
 // 处理注册业务
