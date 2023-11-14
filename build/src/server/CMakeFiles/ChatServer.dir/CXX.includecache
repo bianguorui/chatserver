@@ -6,8 +6,6 @@
 
 #IncludeRegexTransform: 
 
-../include/public.hpp
-
 ../include/server/chatserver.hpp
 muduo/net/TcpServer.h
 -
@@ -33,12 +31,6 @@ friendmodel.hpp
 ../include/server/friendmodel.hpp
 groupmodel.hpp
 ../include/server/groupmodel.hpp
-
-../include/server/db/db.h
-string
--
-mysql/mysql.h
--
 
 ../include/server/model/friendmodel.hpp
 user.hpp
@@ -410,34 +402,6 @@ limits
 type_traits
 -
 
-/home/bgr/Desktop/ChatServer/src/server/chatserver.cpp
-chatserver.hpp
-/home/bgr/Desktop/ChatServer/src/server/chatserver.hpp
-json.hpp
-/home/bgr/Desktop/ChatServer/src/server/json.hpp
-chatservice.hpp
-/home/bgr/Desktop/ChatServer/src/server/chatservice.hpp
-functional
--
-string
--
-
-/home/bgr/Desktop/ChatServer/src/server/chatservice.cpp
-chatservice.hpp
-/home/bgr/Desktop/ChatServer/src/server/chatservice.hpp
-public.hpp
-/home/bgr/Desktop/ChatServer/src/server/public.hpp
-muduo/base/Logging.h
--
-vector
--
-
-/home/bgr/Desktop/ChatServer/src/server/db/db.cpp
-db.h
-/home/bgr/Desktop/ChatServer/src/server/db/db.h
-muduo/base/Logging.h
--
-
 /home/bgr/Desktop/ChatServer/src/server/main.cpp
 chatserver.hpp
 /home/bgr/Desktop/ChatServer/src/server/chatserver.hpp
@@ -447,10 +411,4 @@ iostream
 -
 signal.h
 -
-
-/home/bgr/Desktop/ChatServer/src/server/model/friendmodel.cpp
-friendmodel.hpp
-/home/bgr/Desktop/ChatServer/src/server/model/friendmodel.hpp
-db.h
-/home/bgr/Desktop/ChatServer/src/server/model/db.h
 
