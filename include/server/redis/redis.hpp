@@ -19,10 +19,10 @@ public:
     bool publish(int channel, string message);
 
     // 向redis指定的channel通道订阅消息
-    bool subsribe(int channel);
+    bool subscribe(int channel);
 
     // 向redis指定的channel通道取消订阅消息
-    bool unsubsribe(int channel);
+    bool unsubscribe(int channel);
 
     // 在独立线程中，接受订阅通道中的消息
     void observer_channel_message();

@@ -70,7 +70,7 @@ int main(int argc, char **argv)
     // client和server进行连接
     if (-1 == connect(clientfd, (sockaddr *)&server, sizeof(sockaddr_in)))
     {
-        cerr << "connect server error" << endl;
+        cerr << "connect server error ---" << endl;
         close(clientfd);
         exit(-1);
     }

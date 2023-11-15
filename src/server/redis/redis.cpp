@@ -64,7 +64,7 @@ bool Redis::publish(int channel, string message)
 }
 
 // 向redis指定的channel通道订阅消息
-bool Redis::subsribe(int channel)
+bool Redis::subscribe(int channel)
 {
     if (REDIS_ERR == redisAppendCommand(this->m_subscribe_context, "SUBSRIBE %d", channel))
     {
@@ -86,7 +86,7 @@ bool Redis::subsribe(int channel)
 }
 
 // 向redis指定的channel通道取消订阅消息
-bool Redis::unsubsribe(int channel)
+bool Redis::unsubscribe(int channel)
 {
     if (REDIS_ERR == redisAppendCommand(this->m_subscribe_context, "UNSUBSRIBE %d", channel))
     {
@@ -111,7 +111,7 @@ bool Redis::unsubsribe(int channel)
 void Redis::observer_channel_message()
 {
     redisReply *reply = nullptr;
-    while (REDIS_OK == redisGetReply(this->m_subscribe_context, (void**)&reply))
+    while (REDIS_OK == redisGetReply(this->m_subscribe_context, (void **)&reply))
     {
         // 订阅收到的消息是一个带三元素的数组
         if (reply != nullptr && reply->element[2] != nullptr && reply->element[2]->str != nullptr)

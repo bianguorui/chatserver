@@ -6,6 +6,8 @@
 
 #IncludeRegexTransform: 
 
+../include/public.hpp
+
 ../include/server/chatserver.hpp
 muduo/net/TcpServer.h
 -
@@ -31,6 +33,8 @@ friendmodel.hpp
 ../include/server/friendmodel.hpp
 groupmodel.hpp
 ../include/server/groupmodel.hpp
+redis.hpp
+../include/server/redis.hpp
 
 ../include/server/model/friendmodel.hpp
 user.hpp
@@ -71,6 +75,14 @@ string
 ../include/server/model/usermodel.hpp
 user.hpp
 ../include/server/model/user.hpp
+
+../include/server/redis/redis.hpp
+hiredis/hiredis.h
+-
+thread
+-
+functional
+-
 
 ../thirdparty/json.hpp
 algorithm
@@ -402,6 +414,28 @@ limits
 type_traits
 -
 
+/home/bgr/Desktop/ChatServer/src/server/chatserver.cpp
+chatserver.hpp
+/home/bgr/Desktop/ChatServer/src/server/chatserver.hpp
+json.hpp
+/home/bgr/Desktop/ChatServer/src/server/json.hpp
+chatservice.hpp
+/home/bgr/Desktop/ChatServer/src/server/chatservice.hpp
+functional
+-
+string
+-
+
+/home/bgr/Desktop/ChatServer/src/server/chatservice.cpp
+chatservice.hpp
+/home/bgr/Desktop/ChatServer/src/server/chatservice.hpp
+public.hpp
+/home/bgr/Desktop/ChatServer/src/server/public.hpp
+muduo/base/Logging.h
+-
+vector
+-
+
 /home/bgr/Desktop/ChatServer/src/server/main.cpp
 chatserver.hpp
 /home/bgr/Desktop/ChatServer/src/server/chatserver.hpp
@@ -410,5 +444,11 @@ chatservice.hpp
 iostream
 -
 signal.h
+-
+
+/home/bgr/Desktop/ChatServer/src/server/redis/redis.cpp
+redis.hpp
+/home/bgr/Desktop/ChatServer/src/server/redis/redis.hpp
+iostream
 -
 
