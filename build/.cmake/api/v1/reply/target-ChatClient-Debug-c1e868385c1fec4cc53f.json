@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "/home/bgr/Desktop/ChatServer/bin/ChatServer"
+			"path" : "/home/bgr/Desktop/ChatServer/bin/ChatClient"
 		}
 	],
 	"backtrace" : 1,
@@ -15,7 +15,7 @@
 		],
 		"files" : 
 		[
-			"src/server/CMakeLists.txt",
+			"src/client/CMakeLists.txt",
 			"CMakeLists.txt"
 		],
 		"nodes" : 
@@ -26,7 +26,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 7,
+				"line" : 5,
 				"parent" : 0
 			},
 			{
@@ -61,6 +61,12 @@
 				"file" : 1,
 				"line" : 15,
 				"parent" : 2
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 16,
+				"parent" : 2
 			}
 		]
 	},
@@ -93,24 +99,21 @@
 				},
 				{
 					"backtrace" : 7,
+					"path" : "/home/bgr/Desktop/ChatServer/include/server/redis"
+				},
+				{
+					"backtrace" : 8,
 					"path" : "/home/bgr/Desktop/ChatServer/thirdparty"
 				}
 			],
 			"language" : "CXX",
 			"sourceIndexes" : 
 			[
-				0,
-				1,
-				2,
-				3,
-				4,
-				5,
-				6,
-				7
+				0
 			]
 		}
 	],
-	"id" : "ChatServer::@2804e40980a64c7d7ad1",
+	"id" : "ChatClient::@8ca63c80a879d0067daa",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -124,30 +127,18 @@
 				"role" : "flags"
 			},
 			{
-				"fragment" : "-lmuduo_net",
-				"role" : "libraries"
-			},
-			{
-				"fragment" : "-lmuduo_base",
-				"role" : "libraries"
-			},
-			{
-				"fragment" : "-lmysqlclient",
-				"role" : "libraries"
-			},
-			{
 				"fragment" : "-lpthread",
 				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
-	"name" : "ChatServer",
-	"nameOnDisk" : "ChatServer",
+	"name" : "ChatClient",
+	"nameOnDisk" : "ChatClient",
 	"paths" : 
 	{
-		"build" : "src/server",
-		"source" : "src/server"
+		"build" : "src/client",
+		"source" : "src/client"
 	},
 	"sourceGroups" : 
 	[
@@ -155,14 +146,7 @@
 			"name" : "Source Files",
 			"sourceIndexes" : 
 			[
-				0,
-				1,
-				2,
-				3,
-				4,
-				5,
-				6,
-				7
+				0
 			]
 		}
 	],
@@ -171,49 +155,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/server/chatserver.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/server/chatservice.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/server/main.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/server/db/db.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/server/model/friendmodel.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/server/model/groupmodel.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/server/model/offlinemessagemodel.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/server/model/usermodel.cpp",
+			"path" : "src/client/main.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],
